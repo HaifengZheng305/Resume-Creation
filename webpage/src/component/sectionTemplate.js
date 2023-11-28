@@ -1,14 +1,26 @@
 import React from 'react';
 import  { useState, useEffect } from 'react'
 
+//This creates the section;
+//sectionName - the name of the section
+//sectionElement - the elements you want in cards of this section
+//updateResume
+//allowAddForm - Is this section allowed to add addition cards
+
 export default function SectionTemplate(sectionName, sectionElement, updateResume, allowAddForm=false) {
     const [objectId, setObjectId] = useState(0);
+
+    //setState - adds the card in to the state const array
     const [state, setState] = useState([]);
 
+    // Run the effect only once, when addObject() is called.
     useEffect(() => {
         addObject();
-    }, []); // Run the effect only once, when the component mounts
+    }, []); 
 
+    // Creates an empty card
+    //objectID - the ID of the current card
+    //
     function createEmptyObject() {
 
         const updatedSectionElement =  sectionElement.map((element) => ({...element, input: null}))
@@ -20,17 +32,24 @@ export default function SectionTemplate(sectionName, sectionElement, updateResum
         return stateObject;
     }
 
+    //runs the creatEmptyObject function and addes it to the state array.
+    //updates the resumes object in homepage with this new card.
     function addObject() {
         setState([...state, createEmptyObject()]);
         updateResume(state, sectionName);
     }
 
+    //deletes the selected object
+    //filters the state with ojects other than the ID
+    //updates the resume object in the homepage with the state with the deleted card.
     function deleteObject(e) {
         const id = e.target.parentElement.id;
         setState(state.filter( object => object.id!=id));
         updateResume(state, sectionName);
     }
 
+
+    //updates the content of each card and update it to the resume object
     function updateState(e) {
         let value = e.target.value;
         let categoryId = e.target.parentElement.parentElement.id;

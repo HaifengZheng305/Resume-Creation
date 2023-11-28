@@ -24,6 +24,7 @@ export default function ResumeForm() {
                         {category:'Location', type: 'text'},
                         {category:'Major', type: 'text'},
                         {category:'Minor (if applicable)', type: 'text'}]
+                        
     const education_template = SectionTemplate('Education', education, updateResume, true)
 
     const experience = [{category:'Job Title', type: 'text'},
