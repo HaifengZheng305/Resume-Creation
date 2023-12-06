@@ -27,6 +27,13 @@ app.post("/create-resume", async (req, res) => {
     }
 });
 
+app.get("/create-resume-test", (req,res) => 
+{
+    res.json({
+        messages : "testing"
+    })
+})
+
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`server listening on port ${port}`))
