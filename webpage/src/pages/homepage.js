@@ -13,6 +13,8 @@ export default function ResumeForm() {
             console.log(resume)
     };
 
+    
+
     const general = [ {category: "name", type: 'text'}, 
                     {category:'Phone Number', type: 'text'},
                     {category:'Email', type: 'email'}, 

@@ -15,12 +15,12 @@ export default function Resume() {
         )
     }, [])
 
-    console.log(resume.messages)
+    console.log(resume.message)
 
     return(
         <div>
             <h1>Resume</h1>
-            <p> {resume.messages} </p>
+            <p> {resume.message} </p>
         </div>
     )
 
