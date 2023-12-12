@@ -15,8 +15,6 @@ export default function Resume() {
         )
     }, [])
 
-    console.log(resume.message)
-
     return(
         <div>
             <h1>Resume</h1>

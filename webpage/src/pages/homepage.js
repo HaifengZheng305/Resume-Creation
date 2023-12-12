@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import SectionTemplate from '../component/sectionTemplate';
+import SectionTemplate from '../component/homepageComponent/sectionTemplate';
 
 export default function ResumeForm() {
     const [resume, setResume] = useState({});
@@ -35,6 +35,8 @@ export default function ResumeForm() {
                         {category:'Start Date', type: 'date'},
                         {category:'End Date', type: 'date'}]
     const experience_template = SectionTemplate('Experience', experience, updateResume, true)
+
+    const submitButton = submitButton(resume)
 
 
 
