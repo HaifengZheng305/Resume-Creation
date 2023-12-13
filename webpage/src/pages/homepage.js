@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import SectionTemplate from '../component/homepageComponent/sectionTemplate';
+import submitButton from '../component/homepageComponent/submitButton';
 
 export default function ResumeForm() {
     const [resume, setResume] = useState({});
@@ -36,9 +37,7 @@ export default function ResumeForm() {
                         {category:'End Date', type: 'date'}]
     const experience_template = SectionTemplate('Experience', experience, updateResume, true)
 
-    const submitButton = submitButton(resume)
-
-
+    const button = submitButton(resume)
 
 
   return (
@@ -46,6 +45,7 @@ export default function ResumeForm() {
         {general_template}
         {education_template}
         {experience_template}
+        {button}
     </div>
   );
 }

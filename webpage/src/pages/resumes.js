@@ -5,8 +5,9 @@ export default function Resume() {
 
     const [resume, setResume] = useState({});
 
+    //change this to use axios// 
     useEffect(() => {
-        fetch("/create-resume-test").then(
+        fetch("http://localhost:5000/create-resume-test").then(
             response => response.json([{}])
         ).then(
             data => {

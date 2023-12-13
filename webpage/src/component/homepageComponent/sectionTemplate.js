@@ -76,6 +76,7 @@ export default function SectionTemplate(sectionName, sectionElement, updateResum
         });
 
         updateResume(state, sectionName);
+        console.log(state)
     }
 
 
