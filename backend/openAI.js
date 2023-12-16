@@ -29,6 +29,15 @@ async function postData(text) {
 
   postDataResult = data;
 }
+
+/*
+- test template in the format of my resume object;
+- convert the template into text or some way to be entered in to the content section of the nessage
+- convert the message back to the format of the original object
+- include the api to input into a desire template
+- get the template back to the resume page as a template
+
+*/
 app.post("/create-resume", async (req, res) => {
   const resume = req.body;
   try {
