@@ -1,13 +1,13 @@
 import React from "react";
-import { Nav, NavLink, NavMenu, Name, Avator} from "./style/NavbarElements.js";
+import { Nav, NavLink, NavMenu, Name, Avator } from "./style/NavbarElements.js";
 
 const NavBar = () => {
   return (
     <>
       <Nav>
         <NavMenu>
-            <NavLink to="/"> Card Board </NavLink>
-            <NavLink to="/resume"> Resumes </NavLink>
+          <NavLink to="/"> Card Board </NavLink>
+          <NavLink to="/resume"> Resumes </NavLink>
         </NavMenu>
         <Name>
           <h1>Resume Creator</h1>
@@ -18,6 +18,6 @@ const NavBar = () => {
       </Nav>
     </>
   );
-}
+};
 
 export default NavBar;
