@@ -11,7 +11,7 @@ export default function ResumeForm() {
       ...prevResume,
       [sectionName]: currentObject,
     }));
-    console.log(resume);
+    console.log(JSON.stringify(resume));
   };
 
   const general = [
