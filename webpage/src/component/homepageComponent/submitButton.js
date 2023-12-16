@@ -11,9 +11,7 @@ export default function submitButton(resume) {
   async function submit(event) {
     event.preventDefault();
     try {
-      await axios.post("http://localhost:5000/send_test", {
-        message: "success",
-      });
+      await axios.post("http://localhost:5000/create-resume", { resume });
       navigate("/resume");
     } catch (e) {
       console.log(e);

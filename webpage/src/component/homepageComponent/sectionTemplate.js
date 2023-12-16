@@ -86,9 +86,7 @@ export default function SectionTemplate(
         return section;
       });
     });
-
     updateResume(state, sectionName);
-    console.log(state);
   }
 
   const listItems = state.map((section) => (

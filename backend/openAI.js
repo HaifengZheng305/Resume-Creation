@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 require("dotenv").config();
 const { OpenAI } = require("openai");
 const axios = require("axios");
@@ -7,6 +8,12 @@ const app = express();
 
 app.use(express.json());
 
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
+
 const openai = new OpenAI({
   apiKey: process.env.OPEN_AI_KEY,
 });
@@ -14,8 +21,6 @@ const openai = new OpenAI({
 let postDataResult = null;
 
 async function postData(text) {
-  console.log("testing");
-
   const data = [
     {
       message: text,
@@ -25,6 +30,7 @@ async function postData(text) {
   postDataResult = data;
 }
 app.post("/create-resume", async (req, res) => {
+  const resume = req.body;
   try {
     const response = await openai.chat.completions.create({
       messages: [{ role: "system", content: "You are a helpful assistant." }],
@@ -35,9 +41,9 @@ app.post("/create-resume", async (req, res) => {
       success: true,
     });
   } catch (error) {
-    await postData("fail");
+    await postData(resume);
     return res.status(200).json({
-      success: postDataResult[0].message,
+      success: resume,
       error: error.response ? error.response.data : error.message,
     });
   }
@@ -47,13 +53,7 @@ app.get("/create-resume-test", (req, res) => {
   res.status(200).json({
     message: postDataResult[0].message,
   });
-});
-
-app.post("/send_test", async (req, res) => {
-  const message = req.body;
-  console.log(message);
-
-  return res.status(200).json();
+  console.log(postDataResult[0].message);
 });
 
 const port = process.env.PORT || 5000;
