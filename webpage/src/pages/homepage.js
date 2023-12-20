@@ -96,7 +96,7 @@ export default function ResumeForm() {
 
   const experienceSection = experience.map((section) => (
     <div key={Object.keys(section)}>
-      <Section prop={section} />
+      <Section prop={section} sectionType="experience" />
     </div>
   ));
 
