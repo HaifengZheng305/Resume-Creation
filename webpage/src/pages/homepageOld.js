@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import SectionTemplate from "../component/homepageComponentOld/sectionTemplate";
-import submitButton from "../component/homepageComponentOld/submitButton";
+import SectionTemplate from "../component/features/homepageComponentOld/sectionTemplate";
+import submitButton from "../component/features/homepageComponentOld/submitButton";
 
 export default function ResumeForm() {
   const [resume, setResume] = useState({});
