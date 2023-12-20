@@ -1,9 +1,11 @@
 const express = require("express");
 const cors = require("cors");
-require("dotenv").config();
-const { OpenAI } = require("openai");
 const axios = require("axios");
+
+const { OpenAI } = require("openai");
 const createPrompt = require("./essential_features/createPrompt");
+
+require("dotenv").config();
 
 const app = express();
 
