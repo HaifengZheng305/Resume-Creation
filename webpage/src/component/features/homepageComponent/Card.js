@@ -1,6 +1,7 @@
+import Modal from "./Modal";
+
 export default function Card(props) {
   //make this work for multiple sections
-  console.log(props);
   const title = props["card"][0]["Job Title"];
   const organization = props["card"][1]["Company"];
   const startDate = props["card"][3]["Start Date"];
@@ -18,15 +19,7 @@ export default function Card(props) {
           {startDate} - {endDate}
         </p>
       </div>
-      <div className="p-6 pt-0">
-        <button
-          className="select-none rounded-lg bg-pink-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-          type="button"
-          data-ripple-light="true"
-        >
-          Edit
-        </button>
-      </div>
+      <Modal> </Modal>
     </div>
   );
 }
