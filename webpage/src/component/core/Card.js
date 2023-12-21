@@ -1,3 +1,6 @@
+/* This is only the outline of the Card. 
+prop.Cardinfo */
+
 export default function Card(prop) {
   console.log(prop);
   return (
