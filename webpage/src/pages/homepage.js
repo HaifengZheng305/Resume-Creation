@@ -1,15 +1,14 @@
 import React from "react";
 import { useState } from "react";
-import Section from "../component/features/homepageComponent/ResumeSection";
+import Section from "../component/features/homepageComponent/Section";
 
 export default function ResumeForm() {
   const [resume, setResume] = useState({
     "General Information": [],
     "Experience Section": [
       {
-        Experience: [
+        Experiences: [
           {
-            id: 1,
             card: [
               {
                 "Job Title": "Operations Associate",
@@ -34,10 +33,9 @@ export default function ResumeForm() {
             ],
           },
           {
-            id: 2,
             card: [
               {
-                "Job Title": "Operations Associate",
+                "Job Title": "Accounting Associate",
                 type: "text",
               },
               { Company: "Avin Express", type: "text" },
@@ -61,15 +59,15 @@ export default function ResumeForm() {
         ],
       },
       {
-        Test: [
+        Projects: [
           {
-            id: 1,
             card: [
               {
-                "Job Title": "Operations Associate",
+                "Job Title":
+                  "The correlation of various factors on the Average SAT of each State",
                 type: "text",
               },
-              { Company: "Avin Express", type: "text" },
+              { Company: "Stony Brook University", type: "text" },
               {
                 "Job Description": [
                   "Utilized Pivot tables to visualize 250+ container that are ready for pickup and delivery weekly",
@@ -96,9 +94,9 @@ export default function ResumeForm() {
 
   const experienceSection = experience.map((section) => (
     <div key={Object.keys(section)}>
-      <Section prop={section} sectionType="experience" />
+      <Section section={section} sectionType="experience" />
     </div>
   ));
 
-  return <div>{experienceSection}</div>;
+  return <div className="bg-gray-100 lg:h-screen">{experienceSection}</div>;
 }
