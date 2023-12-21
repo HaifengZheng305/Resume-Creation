@@ -1,13 +1,15 @@
 import Modal from "./Modal";
+import Card from "../../core/Card";
 
-export default function Card(props) {
+export default function CardInfo(props) {
   //make this work for multiple sections
   const title = props["card"][0]["Job Title"];
   const organization = props["card"][1]["Company"];
   const startDate = props["card"][3]["Start Date"];
   const endDate = props["card"][4]["End Date"];
-  return (
-    <div className="relative flex w-80 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md px-8 py-10">
+
+  const experienceOutline = () => (
+    <div>
       <div className="p-6">
         <h5 className="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
           {organization}
@@ -20,6 +22,11 @@ export default function Card(props) {
         </p>
       </div>
       <Modal> </Modal>
+    </div>
+  );
+  return (
+    <div>
+      <Card CardInfo={experienceOutline} />
     </div>
   );
 }

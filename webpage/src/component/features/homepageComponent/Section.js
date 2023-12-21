@@ -1,15 +1,15 @@
-import Card from "./Card";
+import CardInfo from "./CardInfo";
 
 export default function Section(prop) {
   const sectionName = Object.keys(prop.section)[0];
 
   const displayCard = prop.section[sectionName].map((card) => (
     <div key={card["card"][0]["Job Title"]}>
-      <Card card={card["card"]} type={prop.sectionType} />
+      <CardInfo card={card["card"]} type={prop.sectionType} />
     </div>
   ));
   return (
-    <div className="flex justify-items-start py-5 pl-5">
+    <div className="flex justify-items-start py-2 pl-5">
       <div className="w-max sm:w-max md:w-max lg:w-max bg-white p-6 rounded-lg shadow-sm">
         <div className="w-full flex justify-between items-center p-3">
           <h2 className="text-xl font-semibold">{sectionName}</h2>
