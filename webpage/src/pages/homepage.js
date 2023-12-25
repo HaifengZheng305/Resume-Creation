@@ -92,11 +92,17 @@ export default function ResumeForm() {
 
   let experience = resume["Experience Section"];
 
-  const experienceSection = experience.map((section) => (
+  const experienceSection = experience.map((section, index) => (
     <div key={Object.keys(section)}>
-      <Section section={section} sectionType="experience" />
+      <Section
+        sectionType="experience"
+        sectionCategory="Experience Section"
+        index={index}
+        setResume={setResume}
+        resume={resume}
+      />
     </div>
   ));
 
-  return <div className="bg-gray-100 lg:h-screen">{experienceSection}</div>;
+  return <div className="bg-gray-100 lg:h-full">{experienceSection}</div>;
 }

@@ -1,9 +1,13 @@
 import CardInfo from "./CardInfo";
+import Button from "../../core/Button";
+import React, { useState } from "react";
 
 export default function Section(prop) {
-  const sectionName = Object.keys(prop.section)[0];
+  const section = prop.resume[prop.sectionCategory][prop.index];
 
-  const displayCard = prop.section[sectionName].map((card) => (
+  const sectionName = Object.keys(section)[0];
+
+  const displayCard = section[sectionName].map((card) => (
     <div key={card["card"][0]["Job Title"]}>
       <CardInfo card={card["card"]} type={prop.sectionType} />
     </div>
@@ -13,18 +17,50 @@ export default function Section(prop) {
       <div className="w-max sm:w-max md:w-max lg:w-max bg-white p-6 rounded-lg shadow-sm">
         <div className="w-full flex justify-between items-center p-3">
           <h2 className="text-xl font-semibold">{sectionName}</h2>
-          <button
-            id="openModalBtn"
-            className="select-none rounded-lg bg-pink-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-          >
-            <p className="text-white">Add Card</p>
-          </button>
+          <Button
+            text={"Add Card"}
+            onClick={() =>
+              newCard(
+                prop.sectionType,
+                prop.setResume,
+                prop.resume,
+                prop.sectionCategory,
+                prop.index,
+                sectionName
+              )
+            }
+          />
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4"></div>
-        <div className="flex item-center space-x-8 lg:space-x-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 item-center">
           {displayCard}
         </div>
       </div>
     </div>
   );
+}
+
+function newCard(type, setResume, resume, sectionCategory, index, sectionName) {
+  //need to make this work for experience, GI and education//
+  const newCard = {
+    card: [
+      {
+        "Job Title": "New Job",
+        type: "text",
+      },
+      { Company: "New Company", type: "text" },
+      {
+        "Job Description": [],
+        type: "text",
+      },
+      {
+        "Start Date": "N/A",
+        type: "date",
+      },
+      { "End Date": "N/A", type: "date" },
+    ],
+  };
+
+  const updatedResume = { ...resume };
+  updatedResume[sectionCategory][index][sectionName].push(newCard);
+  setResume(updatedResume);
 }

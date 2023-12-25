@@ -1,11 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-const axios = require("axios");
-
-const { OpenAI } = require("openai");
-const createPrompt = require("./essential_features/createPrompt");
-
 require("dotenv").config();
+const { OpenAI } = require("openai");
+const axios = require("axios");
 
 const app = express();
 
@@ -32,22 +29,11 @@ async function postData(text) {
 
   postDataResult = data;
 }
-
-/*
-- test template in the format of my resume object;
-- convert the template into text or some way to be entered in to the content section of the nessage
-- run test run into chat GPT;
-- include the api to input into a desire template
-- get the template back to the resume page as a template
-
-*/
 app.post("/create-resume", async (req, res) => {
   const resume = req.body;
-  const prompt = createPrompt(resume);
-
   try {
     const response = await openai.chat.completions.create({
-      messages: [{ role: "system", content: `${prompt}` }],
+      messages: [{ role: "system", content: "You are a helpful assistant." }],
       model: "ada",
     });
     await postData("success");
