@@ -8,7 +8,7 @@ export default function CardInfo(props) {
   const startDate = props["card"][3]["Start Date"];
   const endDate = props["card"][4]["End Date"];
 
-  const experienceOutline = () => (
+  const experienceOutline = (
     <div>
       <div className="p-6">
         <h5 className="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
@@ -21,7 +21,7 @@ export default function CardInfo(props) {
           {startDate} - {endDate}
         </p>
       </div>
-      <Modal> </Modal>
+      <Modal props = {props}> </Modal>
     </div>
   );
   return (
