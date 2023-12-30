@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../core/Button";
 import TextBox from "./TextBox";
 
 export default function Modal(props) {
   const [showModal, setShowModal] = React.useState(false);
+
+  const [updatedResume, setUpdateResume] = useState();
+
   return (
     <>
       <Button text={"edit"} onClick={() => setShowModal(true)} />

@@ -11,16 +11,10 @@ export default function TextBox(props) {
 }
 
 const experienceTemplate = (prop) => {
-  const [organization, setOrganization] = useState(prop.card["Company"]);
-  const [position, setPosition] = useState(prop.card["Job Title"]);
-  const [startDate, setStartDate] = useState(prop.card["Start Date"]);
-  const [endDate, setEndDate] = useState(prop.card["End Date"]);
+  const [card, setCard] = useState(prop.card);
 
-  const [jobDescriptionList, setJobDescriptionList] = useState(
-    prop.card["Job Description"]
-  );
   const [jobDescriptionString, setJobDescriptionString] = useState(
-    jobDescriptionList.join("\n")
+    card["Job Description"].join("\n")
   );
 
   const handleInputChange = (e) => {
@@ -28,10 +22,10 @@ const experienceTemplate = (prop) => {
 
     const update = jobDescriptionString.split("\n");
 
-    setJobDescriptionList(update);
+    setCard({ ...card, "Job Description": update });
   };
 
-  console.log(jobDescriptionList);
+  console.log(card);
 
   return (
     <div className="flex items-center justify-center p-12">
@@ -50,9 +44,9 @@ const experienceTemplate = (prop) => {
               id="name"
               placeholder="abc.Inc"
               className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              value={organization}
+              value={card["Company"]}
               onChange={(e) => {
-                setOrganization(e.target.value);
+                setCard({ ...card, Company: e.target.value });
               }}
             />
           </div>
@@ -69,9 +63,9 @@ const experienceTemplate = (prop) => {
               id="position"
               placeholder="sales associate"
               className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              value={position}
+              value={card["Job Title"]}
               onChange={(e) => {
-                setPosition(e.target.value);
+                setCard({ ...card, "Job Title": e.target.value });
               }}
             />
           </div>
@@ -89,9 +83,9 @@ const experienceTemplate = (prop) => {
                   name="date"
                   id="date"
                   className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                  value={startDate}
+                  value={card["Start Date"]}
                   onChange={(e) => {
-                    setStartDate(e.target.value);
+                    setCard({ ...card, "Start Date": e.target.value });
                   }}
                 />
               </div>
@@ -109,9 +103,9 @@ const experienceTemplate = (prop) => {
                   name="time"
                   id="time"
                   className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                  value={endDate}
+                  value={card["End Date"]}
                   onChange={(e) => {
-                    setEndDate(e.target.value);
+                    setCard({ ...card, "End Date": e.target.value });
                   }}
                 />
               </div>

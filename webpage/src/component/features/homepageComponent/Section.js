@@ -2,14 +2,14 @@ import CardInfo from "./CardInfo";
 import Button from "../../core/Button";
 import React, { useState } from "react";
 
-export default function Section(prop) {
-  const section = prop.resume[prop.sectionCategory][prop.index];
+export default function Section(props) {
+  const section = props.resume[props.sectionCategory][props.index];
 
   const sectionName = Object.keys(section)[0];
 
   const displayCard = section[sectionName].map((card, index) => (
     <div key={index}>
-      <CardInfo card={card} type={prop.sectionType} />
+      <CardInfo card={card} type={props.sectionType} />
     </div>
   ));
   return (
@@ -21,11 +21,11 @@ export default function Section(prop) {
             text={"Add Card"}
             onClick={() =>
               newCard(
-                prop.sectionType,
-                prop.setResume,
-                prop.resume,
-                prop.sectionCategory,
-                prop.index,
+                props.sectionType,
+                props.setResume,
+                props.resume,
+                props.sectionCategory,
+                props.index,
                 sectionName
               )
             }
@@ -39,7 +39,7 @@ export default function Section(prop) {
   );
 }
 
-function newCard(type, setResume, resume, sectionCategory, index, sectionName) {
+/*function newCard(type, setResume, resume, sectionCategory, index, sectionName) {
   //need to make this work for experience, GI and education//
   const newCard = {
     card: [
@@ -63,4 +63,4 @@ function newCard(type, setResume, resume, sectionCategory, index, sectionName) {
   const updatedResume = { ...resume };
   updatedResume[sectionCategory][index][sectionName].push(newCard);
   setResume(updatedResume);
-}
+}*/
