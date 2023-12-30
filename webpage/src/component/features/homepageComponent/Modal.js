@@ -19,7 +19,7 @@ export default function Modal(props) {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  <TextBox props = {props}/>
+                  <TextBox {...props}/>
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
