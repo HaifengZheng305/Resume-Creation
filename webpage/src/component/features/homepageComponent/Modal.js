@@ -5,7 +5,11 @@ import TextBox from "./TextBox";
 export default function Modal(props) {
   const [showModal, setShowModal] = React.useState(false);
 
-  const [updatedResume, setUpdateResume] = useState();
+  console.log(props);
+
+  const [card, setCard] = useState(props.card);
+
+  console.log(card);
 
   return (
     <>
@@ -24,7 +28,7 @@ export default function Modal(props) {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  <TextBox {...props} />
+                  <TextBox card={card} setCard={setCard} type={props.type} />
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">

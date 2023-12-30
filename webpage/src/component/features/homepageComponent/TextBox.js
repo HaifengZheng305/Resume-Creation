@@ -4,15 +4,13 @@ export default function TextBox(props) {
   let textBoxTemplate = null;
 
   if (props.type === "experience") {
-    textBoxTemplate = experienceTemplate(props);
+    textBoxTemplate = experienceTemplate(props.card, props.setCard);
   }
 
   return <div>{textBoxTemplate}</div>;
 }
 
-const experienceTemplate = (prop) => {
-  const [card, setCard] = useState(prop.card);
-
+const experienceTemplate = (card, setCard) => {
   const [jobDescriptionString, setJobDescriptionString] = useState(
     card["Job Description"].join("\n")
   );
@@ -24,8 +22,6 @@ const experienceTemplate = (prop) => {
 
     setCard({ ...card, "Job Description": update });
   };
-
-  console.log(card);
 
   return (
     <div className="flex items-center justify-center p-12">
