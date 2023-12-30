@@ -3,13 +3,7 @@ import Button from "../../core/Button";
 import TextBox from "./TextBox";
 
 export default function Modal(props) {
-  const [showModal, setShowModal] = React.useState(false);
-
-  console.log(props);
-
-  const [card, setCard] = useState(props.card);
-
-  console.log(card);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
@@ -28,7 +22,11 @@ export default function Modal(props) {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  <TextBox card={card} setCard={setCard} type={props.type} />
+                  <TextBox
+                    card={props.card}
+                    setCard={props.setCard}
+                    type={props.type}
+                  />
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">

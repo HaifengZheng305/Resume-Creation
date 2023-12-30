@@ -9,7 +9,13 @@ export default function Section(props) {
 
   const displayCard = section[sectionName].map((card, index) => (
     <div key={index}>
-      <CardInfo card={card} type={props.sectionType} index={index} />
+      <CardInfo
+        card={card}
+        type={props.sectionType}
+        index={index}
+        updateSection={props.updateSection}
+        resume={props.resume}
+      />
     </div>
   ));
   return (

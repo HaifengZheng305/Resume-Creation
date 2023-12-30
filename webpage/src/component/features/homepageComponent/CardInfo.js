@@ -1,12 +1,17 @@
 import Modal from "./Modal";
 import Card from "../../core/Card";
+import { useState } from "react";
 
 export default function CardInfo(props) {
   //make this work for multiple sections
   let cardOutline = null;
 
+  const [card, setCard] = useState(props.card);
+
+  const updateResume = () => {};
+
   if (props.type === "experience") {
-    cardOutline = experienceTemplate(props);
+    cardOutline = experienceTemplate(card, setCard, props.type);
   }
 
   return (
@@ -16,11 +21,13 @@ export default function CardInfo(props) {
   );
 }
 
-const experienceTemplate = (props) => {
-  const title = props["card"]["Job Title"];
-  const organization = props["card"]["Company"];
-  const startDate = props["card"]["Start Date"];
-  const endDate = props["card"]["End Date"];
+const experienceTemplate = (card, setCard, type) => {
+  const title = card["Job Title"];
+  const organization = card["Company"];
+  const startDate = card["Start Date"];
+  const endDate = card["End Date"];
+
+  console.log(card);
 
   return (
     <div>
@@ -35,7 +42,7 @@ const experienceTemplate = (props) => {
           {startDate} - {endDate}
         </p>
       </div>
-      <Modal {...props}> </Modal>
+      <Modal card={card} setCard={setCard} type={type}></Modal>
     </div>
   );
 };

@@ -68,13 +68,17 @@ export default function ResumeForm() {
 
   let experience = resume["Experience Section"];
 
+  const updateSection = (section, newSection) => {
+    setResume({ ...resume, [section]: newSection });
+  };
+
   const experienceSection = experience.map((section, index) => (
     <div key={Object.keys(section)}>
       <Section
         sectionType="experience"
         sectionCategory="Experience Section"
         index={index}
-        setResume={setResume}
+        updateSection={updateSection}
         resume={resume}
       />
     </div>
