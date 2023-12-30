@@ -7,7 +7,6 @@ export default function Section(prop) {
 
   const sectionName = Object.keys(section)[0];
 
-
   const displayCard = section[sectionName].map((card, index) => (
     <div key={index}>
       <CardInfo card={card} type={prop.sectionType} />
