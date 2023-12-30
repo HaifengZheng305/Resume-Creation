@@ -3,12 +3,26 @@ import Card from "../../core/Card";
 
 export default function CardInfo(props) {
   //make this work for multiple sections
+  let cardOutline = null;
+
+  if (props.type === "experience") {
+    cardOutline = experienceTemplate(props);
+  }
+
+  return (
+    <div>
+      <Card CardInfo={cardOutline} />
+    </div>
+  );
+}
+
+const experienceTemplate = (props) => {
   const title = props["card"]["Job Title"];
   const organization = props["card"]["Company"];
   const startDate = props["card"]["Start Date"];
   const endDate = props["card"]["End Date"];
 
-  const experienceOutline = (
+  return (
     <div>
       <div className="p-6">
         <h5 className="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
@@ -24,9 +38,4 @@ export default function CardInfo(props) {
       <Modal {...props}> </Modal>
     </div>
   );
-  return (
-    <div>
-      <Card CardInfo={experienceOutline} />
-    </div>
-  );
-}
+};
