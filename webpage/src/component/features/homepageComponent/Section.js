@@ -14,7 +14,7 @@ export default function Section(prop) {
   ));
   return (
     <div className="flex justify-items-start py-2 pl-5">
-      <div className="w-max sm:w-max md:w-max lg:w-max bg-white p-6 rounded-lg shadow-sm">
+      <div className=" w-max sm:w-max md:w-max lg:w-max bg-white p-6 rounded-lg shadow-sm">
         <div className="w-full flex justify-between items-center p-3">
           <h2 className="text-xl font-semibold">{sectionName}</h2>
           <Button

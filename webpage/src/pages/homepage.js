@@ -80,5 +80,9 @@ export default function ResumeForm() {
     </div>
   ));
 
-  return <div className="bg-gray-100 lg:h-full">{experienceSection}</div>;
+  return (
+    <div className="min-h-screen bg-gray-100 ">
+      <div>{experienceSection}</div>
+    </div>
+  );
 }
