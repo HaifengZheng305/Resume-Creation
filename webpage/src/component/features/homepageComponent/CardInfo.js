@@ -3,10 +3,10 @@ import Card from "../../core/Card";
 
 export default function CardInfo(props) {
   //make this work for multiple sections
-  const title = props["card"][0]["Job Title"];
-  const organization = props["card"][1]["Company"];
-  const startDate = props["card"][3]["Start Date"];
-  const endDate = props["card"][4]["End Date"];
+  const title = props["card"]["Job Title"];
+  const organization = props["card"]["Company"];
+  const startDate = props["card"]["Start Date"];
+  const endDate = props["card"]["End Date"];
 
   const experienceOutline = (
     <div>
@@ -21,7 +21,7 @@ export default function CardInfo(props) {
           {startDate} - {endDate}
         </p>
       </div>
-      <Modal props = {props}> </Modal>
+      <Modal {...props}> </Modal>
     </div>
   );
   return (
