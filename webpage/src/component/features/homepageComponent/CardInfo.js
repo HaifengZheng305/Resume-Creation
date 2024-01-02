@@ -6,12 +6,10 @@ export default function CardInfo(props) {
   //make this work for multiple sections
   let cardOutline = null;
 
-  const [card, setCard] = useState(props.card);
-
   const updateResume = () => {};
 
   if (props.type === "experience") {
-    cardOutline = experienceTemplate(card, setCard, props.type);
+    cardOutline = experienceTemplate(props.card, props.type);
   }
 
   return (
@@ -21,13 +19,11 @@ export default function CardInfo(props) {
   );
 }
 
-const experienceTemplate = (card, setCard, type) => {
+const experienceTemplate = (card, type) => {
   const title = card["Job Title"];
   const organization = card["Company"];
   const startDate = card["Start Date"];
   const endDate = card["End Date"];
-
-  console.log(card);
 
   return (
     <div>
@@ -42,7 +38,7 @@ const experienceTemplate = (card, setCard, type) => {
           {startDate} - {endDate}
         </p>
       </div>
-      <Modal card={card} setCard={setCard} type={type}></Modal>
+      <Modal card={card} type={type}></Modal>
     </div>
   );
 };

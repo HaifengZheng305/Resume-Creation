@@ -5,6 +5,8 @@ import TextBox from "./TextBox";
 export default function Modal(props) {
   const [showModal, setShowModal] = useState(false);
 
+  const [card, setCard] = useState(props.card);
+
   return (
     <>
       <Button text={"edit"} onClick={() => setShowModal(true)} />
@@ -22,11 +24,7 @@ export default function Modal(props) {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  <TextBox
-                    card={props.card}
-                    setCard={props.setCard}
-                    type={props.type}
-                  />
+                  <TextBox card={card} setCard={setCard} type={props.type} />
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
