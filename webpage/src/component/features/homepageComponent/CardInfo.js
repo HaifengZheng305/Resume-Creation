@@ -42,7 +42,12 @@ const experienceTemplate = (card, type, updateSection) => {
           {startDate} - {endDate}
         </p>
       </div>
-      <Modal card={card} type={type} updateSection={updateSection}></Modal>
+      <Modal
+        action={"edit"}
+        card={card}
+        type={type}
+        updateSection={updateSection}
+      ></Modal>
     </div>
   );
 };
