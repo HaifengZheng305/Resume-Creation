@@ -70,8 +70,6 @@ export default function ResumeForm() {
     setResume({ ...resume, [section]: newSection });
   };
 
-  console.log(resume);
-
   const experienceSection = resume["Experience Section"].map(
     (section, index) => (
       <div key={Object.keys(section)}>

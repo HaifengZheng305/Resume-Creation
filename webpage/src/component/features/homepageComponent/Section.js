@@ -4,26 +4,30 @@ import React, { useState } from "react";
 
 export default function Section(props) {
   let section = props.section;
-  //this is the subsection
-
   const sectionName = Object.keys(section)[0];
 
-  console.log(section);
+  let renderCard = null;
 
-  const displayCard = section[sectionName].map((card, index) => (
-    <div key={index}>
-      <CardInfo
-        card={card}
-        type={props.sectionType}
-        index={index}
-        updateSection={(card) => {
-          section[sectionName][index] = card;
-          props.updateExperience(section);
-        }}
-        resume={props.resume}
-      />
-    </div>
-  ));
+  const renderExperience = () => {
+    return section[sectionName].map((card, index) => (
+      <div key={index}>
+        <CardInfo
+          card={card}
+          type={props.sectionType}
+          updateSection={(updatedCard) => {
+            const updatedSection = { ...section }; // Create a shallow copy
+            updatedSection[sectionName][index] = updatedCard;
+            props.updateExperience(updatedSection);
+          }}
+        />
+      </div>
+    ));
+  };
+
+  if (props.sectionType === "experience") {
+    renderCard = renderExperience();
+  }
+
   return (
     <div className="flex justify-items-start py-2 pl-5">
       <div className=" w-max sm:w-max md:w-max lg:w-max bg-white p-6 rounded-lg shadow-sm">
@@ -44,7 +48,7 @@ export default function Section(props) {
           />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 item-center">
-          {displayCard}
+          {renderCard}
         </div>
       </div>
     </div>
