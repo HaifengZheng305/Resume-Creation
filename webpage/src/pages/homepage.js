@@ -66,23 +66,29 @@ export default function ResumeForm() {
     ],
   });
 
-  let experience = resume["Experience Section"];
-
   const updateSection = (section, newSection) => {
     setResume({ ...resume, [section]: newSection });
   };
 
-  const experienceSection = experience.map((section, index) => (
-    <div key={Object.keys(section)}>
-      <Section
-        sectionType="experience"
-        sectionCategory="Experience Section"
-        index={index}
-        updateSection={updateSection}
-        resume={resume}
-      />
-    </div>
-  ));
+  console.log(resume);
+
+  const experienceSection = resume["Experience Section"].map(
+    (section, index) => (
+      <div key={Object.keys(section)}>
+        <Section
+          sectionType="experience"
+          //sectionCategory="Experience Section"
+          //index={index}
+          updateExperience={(section) => {
+            let updatedResume = { ...resume };
+            updatedResume["Experience Section"][index] = section;
+            setResume(updatedResume);
+          }}
+          section={section}
+        />
+      </div>
+    )
+  );
 
   return (
     <div className="min-h-screen bg-gray-100 ">

@@ -9,7 +9,11 @@ export default function CardInfo(props) {
   const updateResume = () => {};
 
   if (props.type === "experience") {
-    cardOutline = experienceTemplate(props.card, props.type);
+    cardOutline = experienceTemplate(
+      props.card,
+      props.type,
+      props.updateSection
+    );
   }
 
   return (
@@ -19,7 +23,7 @@ export default function CardInfo(props) {
   );
 }
 
-const experienceTemplate = (card, type) => {
+const experienceTemplate = (card, type, updateSection) => {
   const title = card["Job Title"];
   const organization = card["Company"];
   const startDate = card["Start Date"];
@@ -38,7 +42,7 @@ const experienceTemplate = (card, type) => {
           {startDate} - {endDate}
         </p>
       </div>
-      <Modal card={card} type={type}></Modal>
+      <Modal card={card} type={type} updateSection={updateSection}></Modal>
     </div>
   );
 };

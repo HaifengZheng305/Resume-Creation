@@ -3,9 +3,12 @@ import Button from "../../core/Button";
 import React, { useState } from "react";
 
 export default function Section(props) {
-  const section = props.resume[props.sectionCategory][props.index];
+  let section = props.section;
+  //this is the subsection
 
   const sectionName = Object.keys(section)[0];
+
+  console.log(section);
 
   const displayCard = section[sectionName].map((card, index) => (
     <div key={index}>
@@ -13,7 +16,10 @@ export default function Section(props) {
         card={card}
         type={props.sectionType}
         index={index}
-        updateSection={props.updateSection}
+        updateSection={(card) => {
+          section[sectionName][index] = card;
+          props.updateExperience(section);
+        }}
         resume={props.resume}
       />
     </div>
