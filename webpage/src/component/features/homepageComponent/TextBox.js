@@ -11,14 +11,21 @@ export default function TextBox(props) {
 }
 
 const experienceTemplate = (card, setCard) => {
-  const [jobDescriptionString, setJobDescriptionString] = useState(
-    card["Job Description"].join("\n")
-  );
+  let jobDescription = [];
+
+  if (card["Job Description"] && card["Job Description"].length)
+    jobDescription = card["Job Description"].join("\n");
+
+  const [jobDescriptionString, setJobDescriptionString] =
+    useState(jobDescription);
 
   const handleInputChange = (e) => {
     setJobDescriptionString(e.target.value);
 
-    const update = jobDescriptionString.split("\n");
+    let update = [e.target.value];
+
+    if (card["Job Description"] && card["Job Description"].length)
+      update = jobDescriptionString.split("\n");
 
     setCard({ ...card, "Job Description": update });
   };

@@ -1,6 +1,7 @@
 import CardInfo from "./CardInfo";
 import Button from "../../core/Button";
 import React, { useState } from "react";
+import Modal from "./Modal";
 
 export default function Section(props) {
   let section = props.section;
@@ -34,18 +35,13 @@ export default function Section(props) {
         <div className="w-full flex justify-between items-center p-3">
           <h2 className="text-xl font-semibold">{sectionName}</h2>
           <Button
-            text={"Add Card"}
-            onClick={() =>
-              newCard(
-                props.sectionType,
-                props.setResume,
-                props.resume,
-                props.sectionCategory,
-                props.index,
-                sectionName
-              )
-            }
-          />
+            text="add"
+            onClick={() => {
+              const updatedSection = { ...section }; // Create a shallow copy
+              updatedSection[sectionName].push(blankCard);
+              props.updateExperience(updatedSection);
+            }}
+          ></Button>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 item-center">
           {renderCard}
@@ -55,28 +51,19 @@ export default function Section(props) {
   );
 }
 
-/*function newCard(type, setResume, resume, sectionCategory, index, sectionName) {
-  //need to make this work for experience, GI and education//
-  const newCard = {
-    card: [
-      {
-        "Job Title": "New Job",
-        type: "text",
-      },
-      { Company: "New Company", type: "text" },
-      {
-        "Job Description": [],
-        type: "text",
-      },
-      {
-        "Start Date": "N/A",
-        type: "date",
-      },
-      { "End Date": "N/A", type: "date" },
-    ],
-  };
+const blankCard = {
+  "Job Title": "Job Title",
 
-  const updatedResume = { ...resume };
+  Company: "Company Name",
+
+  "Job Description": [],
+
+  "Start Date": "",
+
+  "End Date": "",
+};
+
+/*const updatedResume = { ...resume };
   updatedResume[sectionCategory][index][sectionName].push(newCard);
   setResume(updatedResume);
 }*/

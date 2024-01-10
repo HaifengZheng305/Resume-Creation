@@ -95,7 +95,7 @@ export default function ResumeForm() {
     )
   );
 
-  console.log(jobDescription);
+  console.log(resume);
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="grid grid-cols-3 gap-4">

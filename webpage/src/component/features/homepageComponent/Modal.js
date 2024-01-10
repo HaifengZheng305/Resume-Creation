@@ -7,6 +7,8 @@ export default function Modal(props) {
 
   const [card, setCard] = useState(props.card);
 
+  console.log(props.card);
+
   return (
     <>
       <Button text={props.action} onClick={() => setShowModal(true)} />
