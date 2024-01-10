@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Section from "../component/features/homepageComponent/Section";
+import JobDescription from "../component/features/homepageComponent/JobDescription";
 
 export default function ResumeForm() {
   const [resume, setResume] = useState({
@@ -66,8 +67,14 @@ export default function ResumeForm() {
     ],
   });
 
+  const [jobDescription, setJobDescription] = useState("");
+
   const updateSection = (section, newSection) => {
     setResume({ ...resume, [section]: newSection });
+  };
+
+  const updateJobDescription = (updatedJobDescription) => {
+    setJobDescription(updatedJobDescription);
   };
 
   const experienceSection = resume["Experience Section"].map(
@@ -88,9 +95,18 @@ export default function ResumeForm() {
     )
   );
 
+  console.log(jobDescription);
   return (
-    <div className="min-h-screen bg-gray-100 ">
-      <div>{experienceSection}</div>
+    <div className="min-h-screen bg-gray-100">
+      <div className="grid grid-cols-3 gap-4">
+        <div className=" col-span-2">
+          <div>{experienceSection}</div>
+        </div>
+        <JobDescription
+          updateJobDescription={updateJobDescription}
+          test="test"
+        />
+      </div>
     </div>
   );
 }
